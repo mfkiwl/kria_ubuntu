@@ -1,20 +1,19 @@
-These instructions provide an outline of the steps required to boot Ubuntu Linux on the Xilinx ZCU104 evaluation board. It is reported that these same instructions also succeed for the ZCU102 board with appropriate substitutions. 
+These instructions provide an outline of the steps required to boot Ubuntu Linux on the Xilinx Kria KV260 evaluation board.
 
+- Download and install Xilinx Petalinux 2021.1. See "PetaLinux Tools Documentation Reference Guide", (UG1144).
 
-
-- Download and install Xilinx Petalinux 2019.1. See "PetaLinux Tools Documentation Reference Guide", (UG1144).
-
-    Note there is an error in the installation instructions for Ubuntu. You need to install the gawk package not awk.
+    NOTE: there was an error in the installation instructions for Ubuntu. You need to install the gawk package not awk.
 
 - Set up your environment variables. Something like this depending on where you installed Petalinux.
 
-    source /opt/Xilinx/petalinux/settings.sh
+    source ~/xilinx/PetaLinux/2021.1/tool/settings.sh
 
-- Download the the zcu104 Petalinux BSP from here
 
-    https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html
+- Download the the kria Petalinux BSP from here
 
-    It is called "xilinx-zcu104-v2019.1-final.bsp". Put it somewhere it can be accessed in the next command.
+    https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-k26-som-v2021.1-updated-final.bsp
+
+    Put it somewhere it can be accessed in the next command.
 
 - Now create the petalinux project. (Note: the BSP file name changes with version.)
 
