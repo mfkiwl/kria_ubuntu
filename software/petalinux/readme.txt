@@ -8,50 +8,34 @@ These instructions provide an outline of the steps required to boot Ubuntu Linux
 
     source ~/xilinx/PetaLinux/2021.1/tool/settings.sh
 
-
-- Download the the kria Petalinux BSP from here
-
-    https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-k26-som-v2021.1-updated-final.bsp
-
-    Put it somewhere it can be accessed in the next command.
-
 - Now create the petalinux project. (Note: the BSP file name changes with version.)
 
-    petalinux-create --force --type project --template zynqMP --source ~/Downloads/xilinx/zcu104/xilinx-zcu104-v2019.2-final.bsp --name proj1
+    petalinux-create -t project -s ~/Downloads/xilinx/kria/xilinx-k26-som-v2021.1-updated-final.bsp
 
 - Now configure the petalinux project with the settings we need to run Ubuntu from the SD card.
 
-    cd proj1
+    cd xilinx-k26-som-2021.1/
 
-    petalinux-config --get-hw-description=~/github/zcu104_ubuntu/fpga/implement/results/
+    petalinux-config --get-hw-description=../../../fpga/implement/results/
 
 - This will bring up a configuration menu.  Make the following changes.
 
-    * Under "Image Packaging Configuration" -> 
-        "Root filesystem type" -> 
-        Select "SD Card"
-    * Under "DTG Settings" -> 
-        "Kernel Bootargs" -> 
-        Un-select "generate boot args automatically" -> 
-        Enter "user set kernel bootargs" -> Paste in the following line
-            earlycon clk_ignore_unused earlyprintk root=/dev/mmcblk0p2 rw rootwait cma=1024M
+    * Under "Image Packaging Configuration" -> "Root filesystem type" -> Select "SD Card"
+    * Under "Image Packaging Configuration" -> "Device Node of SD Device" -> Change to mmcblk1p2
     * Save and exit the configuration menu. Wait for configuration to complete.
-
-- Now edit a file to patch a bug in the Petalinux BSP for the zcu104. (I don't know if this is still necessary.)
-
-    vim project-spec/meta-user/conf/petalinuxbsp.conf
-
-    * Add the followint line
-        IMAGE_INSTALL_remove = "gstreamer-vcu-examples"
 
 - Now build the bootloader
 
     petalinux-build -c bootloader -x distclean
 
-- Now run another configu menu.
+Run another configu menu.
 
-    petalinux-config --silentconfig -c kernel
-    
+    petalinux-config -c kernel
+
+and make these changes to avoid frequent Linux crashes.
+
+    * Under "CPU Power Management" ---> "CPU Idle" ---> [ ] CPU idle PM support  (uncheck)
+
 - Now build the linux kernel
 
     petalinux-build
