@@ -1,6 +1,6 @@
 //
 module top (
-    output logic [3:0] led
+    //output logic [3:0] led
 );
 
     logic [39:0]    M00_AXI_araddr;
@@ -52,9 +52,9 @@ module top (
         .axi_aresetn        (axi_aresetn)
     );
     
-    logic [27:0] led_count;
-    always_ff @(posedge axi_aclk) led_count <= led_count + 1;
-    assign led[3:2] = led_count[27:26]; 
+//    logic [27:0] led_count;
+//    always_ff @(posedge axi_aclk) led_count <= led_count + 1;
+//    assign led[3:2] = led_count[27:26]; 
 
     // This register file gives software contol over unit under test (UUT).
     localparam int Nregs = 16;
@@ -63,7 +63,7 @@ module top (
     assign slv_read[0] = 32'hdeadbeef;
     assign slv_read[1] = 32'h76543210;
     
-    assign led[1:0] = slv_reg[2][1:0];
+//    assign led[1:0] = slv_reg[2][1:0];
     assign slv_read[2] = slv_reg[2];
     
     assign slv_read[Nregs-1:3] = slv_reg[Nregs-1:3];

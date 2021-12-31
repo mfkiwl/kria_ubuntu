@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------
 | Tool Version      : Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
-| Date              : Fri Dec 31 17:23:30 2021
+| Date              : Fri Dec 31 18:03:43 2021
 | Host              : WD-SN850 running 64-bit Ubuntu 20.04.3 LTS
 | Command           : report_timing_summary -file ./results/timing.rpt
 | Design            : top
@@ -53,7 +53,7 @@ Table of Contents
 3. checking pulse_width_clock (0)
 4. checking unconstrained_internal_endpoints (0)
 5. checking no_input_delay (0)
-6. checking no_output_delay (4)
+6. checking no_output_delay (0)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -90,9 +90,9 @@ Table of Contents
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (4)
+6. checking no_output_delay (0)
 -------------------------------
- There are 4 ports with no output delay specified. (HIGH)
+ There are 0 ports with no output delay specified.
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -137,7 +137,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-      4.375        0.000                      0                49273        0.010        0.000                      0                49273        3.500        0.000                       0                 18257  
+      4.248        0.000                      0                49307        0.011        0.000                      0                49307        3.500        0.000                       0                 18261  
 
 
 All user specified timing constraints are met.
@@ -161,7 +161,7 @@ clk_pl_1  {0.000 5.000}      10.000          100.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-clk_pl_0            4.375        0.000                      0                49273        0.010        0.000                      0                49273        3.500        0.000                       0                 18257  
+clk_pl_0            4.248        0.000                      0                49307        0.011        0.000                      0                49307        3.500        0.000                       0                 18261  
 
 
 ------------------------------------------------------------------------------------------------
@@ -192,34 +192,34 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  clk_pl_0
   To Clock:  clk_pl_0
 
-Setup :            0  Failing Endpoints,  Worst Slack        4.375ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.010ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        4.248ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.011ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        3.500ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             4.375ns  (required time - arrival time)
-  Source:                 system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_arb.r_thread_arb/grant_i_reg[1]/C
+Slack (MET) :             4.248ns  (required time - arrival time)
+  Source:                 system_i/rst_ps8_0_99M/U0/ACTIVE_LOW_PR_OUT_DFF[0].FDRE_PER_N/C
                             (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/r_payld_reg_reg[134]/D
+  Destination:            system_i/axi_bram_ctrl_0/U0/gext_inst.abcv4_0_ext_inst/GEN_AXI4.I_FULL_AXI/I_RD_CHNL/GEN_NO_RD_CMD_OPT.bram_en_int_reg/R
                             (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_pl_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_pl_0 rise@10.000ns - clk_pl_0 rise@0.000ns)
-  Data Path Delay:        5.400ns  (logic 0.528ns (9.778%)  route 4.872ns (90.222%))
-  Logic Levels:           2  (LUT6=2)
-  Clock Path Skew:        -0.108ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    2.154ns = ( 12.154 - 10.000 ) 
-    Source Clock Delay      (SCD):    2.435ns
-    Clock Pessimism Removal (CPR):    0.173ns
+  Data Path Delay:        5.306ns  (logic 0.113ns (2.130%)  route 5.193ns (97.870%))
+  Logic Levels:           0  
+  Clock Path Skew:        -0.167ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.152ns = ( 12.152 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.460ns
+    Clock Pessimism Removal (CPR):    0.141ns
   Clock Uncertainty:      0.160ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.312ns
     Phase Error              (PE):    0.000ns
-  Clock Net Delay (Source):      2.168ns (routing 1.045ns, distribution 1.123ns)
-  Clock Net Delay (Destination): 1.938ns (routing 0.955ns, distribution 0.983ns)
+  Clock Net Delay (Source):      2.193ns (routing 1.045ns, distribution 1.148ns)
+  Clock Net Delay (Destination): 1.936ns (routing 0.955ns, distribution 0.981ns)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -229,19 +229,13 @@ Slack (MET) :             4.375ns  (required time - arrival time)
                          net (fo=1, routed)           0.229     0.229    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
     BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
                                                       0.038     0.267 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
-    X0Y1 (CLOCK_ROOT)    net (fo=18257, routed)       2.168     2.435    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_arb.r_thread_arb/aclk
-    SLICE_X14Y82         FDRE                                         r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_arb.r_thread_arb/grant_i_reg[1]/C
+    X0Y1 (CLOCK_ROOT)    net (fo=18261, routed)       2.193     2.460    system_i/rst_ps8_0_99M/U0/slowest_sync_clk
+    SLICE_X17Y164        FDRE                                         r  system_i/rst_ps8_0_99M/U0/ACTIVE_LOW_PR_OUT_DFF[0].FDRE_PER_N/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y82         FDRE (Prop_GFF2_SLICEL_C_Q)
-                                                      0.116     2.551 r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_arb.r_thread_arb/grant_i_reg[1]/Q
-                         net (fo=140, routed)         4.583     7.134    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_arb.r_thread_arb/sr_thread_grant[1]
-    SLICE_X22Y100        LUT6 (Prop_H6LUT_SLICEL_I2_O)
-                                                      0.227     7.361 r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_arb.r_thread_arb/r_payld_reg[134]_i_2/O
-                         net (fo=1, routed)           0.222     7.583    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_arb.r_thread_arb/r_payld_reg[134]_i_2_n_0
-    SLICE_X22Y100        LUT6 (Prop_D6LUT_SLICEL_I0_O)
-                                                      0.185     7.768 r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_arb.r_thread_arb/r_payld_reg[134]_i_1/O
-                         net (fo=1, routed)           0.067     7.835    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/f_muxhot_return[134]
-    SLICE_X22Y100        FDRE                                         r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/r_payld_reg_reg[134]/D
+    SLICE_X17Y164        FDRE (Prop_AFF_SLICEM_C_Q)
+                                                      0.113     2.573 f  system_i/rst_ps8_0_99M/U0/ACTIVE_LOW_PR_OUT_DFF[0].FDRE_PER_N/Q
+                         net (fo=585, routed)         5.193     7.766    system_i/axi_bram_ctrl_0/U0/gext_inst.abcv4_0_ext_inst/GEN_AXI4.I_FULL_AXI/I_RD_CHNL/s_axi_aresetn
+    SLICE_X14Y119        FDRE                                         r  system_i/axi_bram_ctrl_0/U0/gext_inst.abcv4_0_ext_inst/GEN_AXI4.I_FULL_AXI/I_RD_CHNL/GEN_NO_RD_CMD_OPT.bram_en_int_reg/R  (IS_INVERTED)
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_pl_0 rise edge)
@@ -250,17 +244,17 @@ Slack (MET) :             4.375ns  (required time - arrival time)
                          net (fo=1, routed)           0.181    10.181    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
     BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
                                                       0.035    10.216 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
-    X0Y1 (CLOCK_ROOT)    net (fo=18257, routed)       1.938    12.154    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/aclk
-    SLICE_X22Y100        FDRE                                         r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/r_payld_reg_reg[134]/C
-                         clock pessimism              0.173    12.327    
-                         clock uncertainty           -0.160    12.166    
-    SLICE_X22Y100        FDRE (Setup_DFF_SLICEL_C_D)
-                                                      0.044    12.210    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/r_payld_reg_reg[134]
+    X0Y1 (CLOCK_ROOT)    net (fo=18261, routed)       1.936    12.152    system_i/axi_bram_ctrl_0/U0/gext_inst.abcv4_0_ext_inst/GEN_AXI4.I_FULL_AXI/I_RD_CHNL/s_axi_aclk
+    SLICE_X14Y119        FDRE                                         r  system_i/axi_bram_ctrl_0/U0/gext_inst.abcv4_0_ext_inst/GEN_AXI4.I_FULL_AXI/I_RD_CHNL/GEN_NO_RD_CMD_OPT.bram_en_int_reg/C
+                         clock pessimism              0.141    12.293    
+                         clock uncertainty           -0.160    12.133    
+    SLICE_X14Y119        FDRE (Setup_HFF_SLICEL_C_R)
+                                                     -0.119    12.014    system_i/axi_bram_ctrl_0/U0/gext_inst.abcv4_0_ext_inst/GEN_AXI4.I_FULL_AXI/I_RD_CHNL/GEN_NO_RD_CMD_OPT.bram_en_int_reg
   -------------------------------------------------------------------
-                         required time                         12.210    
-                         arrival time                          -7.835    
+                         required time                         12.014    
+                         arrival time                          -7.766    
   -------------------------------------------------------------------
-                         slack                                  4.375    
+                         slack                                  4.248    
 
 
 
@@ -268,22 +262,22 @@ Slack (MET) :             4.375ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.010ns  (arrival time - required time)
-  Source:                 system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[1].r_payld_fifo/mesg_reg_reg[48]/C
+Slack (MET) :             0.011ns  (arrival time - required time)
+  Source:                 system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[2].r_payld_fifo/mesg_reg_reg[22]/C
                             (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[1].r_shelf_reg[1][48]/D
+  Destination:            system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[2].r_shelf_reg[2][22]/D
                             (rising edge-triggered cell FDRE clocked by clk_pl_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_pl_0
   Path Type:              Hold (Min at Slow Process Corner)
   Requirement:            0.000ns  (clk_pl_0 rise@0.000ns - clk_pl_0 rise@0.000ns)
-  Data Path Delay:        0.230ns  (logic 0.113ns (49.130%)  route 0.117ns (50.870%))
+  Data Path Delay:        0.221ns  (logic 0.113ns (51.131%)  route 0.108ns (48.869%))
   Logic Levels:           0  
-  Clock Path Skew:        0.119ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.431ns
-    Source Clock Delay      (SCD):    2.139ns
+  Clock Path Skew:        0.107ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.390ns
+    Source Clock Delay      (SCD):    2.110ns
     Clock Pessimism Removal (CPR):    0.173ns
-  Clock Net Delay (Source):      1.923ns (routing 0.955ns, distribution 0.968ns)
-  Clock Net Delay (Destination): 2.164ns (routing 1.045ns, distribution 1.119ns)
+  Clock Net Delay (Source):      1.894ns (routing 0.955ns, distribution 0.939ns)
+  Clock Net Delay (Destination): 2.123ns (routing 1.045ns, distribution 1.078ns)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -293,13 +287,13 @@ Slack (MET) :             0.010ns  (arrival time - required time)
                          net (fo=1, routed)           0.181     0.181    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
     BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
                                                       0.035     0.216 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
-    X0Y1 (CLOCK_ROOT)    net (fo=18257, routed)       1.923     2.139    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[1].r_payld_fifo/aclk
-    SLICE_X20Y96         FDRE                                         r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[1].r_payld_fifo/mesg_reg_reg[48]/C
+    X0Y1 (CLOCK_ROOT)    net (fo=18261, routed)       1.894     2.110    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[2].r_payld_fifo/aclk
+    SLICE_X10Y85         FDRE                                         r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[2].r_payld_fifo/mesg_reg_reg[22]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X20Y96         FDRE (Prop_CFF2_SLICEM_C_Q)
-                                                      0.113     2.252 r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[1].r_payld_fifo/mesg_reg_reg[48]/Q
-                         net (fo=2, routed)           0.117     2.369    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/r_payld_i[1]_5[48]
-    SLICE_X19Y97         FDRE                                         r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[1].r_shelf_reg[1][48]/D
+    SLICE_X10Y85         FDRE (Prop_CFF2_SLICEM_C_Q)
+                                                      0.113     2.223 r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[2].r_payld_fifo/mesg_reg_reg[22]/Q
+                         net (fo=2, routed)           0.108     2.331    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/r_payld_i[2]_7[22]
+    SLICE_X9Y85          FDRE                                         r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[2].r_shelf_reg[2][22]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_pl_0 rise edge)
@@ -308,16 +302,16 @@ Slack (MET) :             0.010ns  (arrival time - required time)
                          net (fo=1, routed)           0.229     0.229    system_i/zynq_ultra_ps_e_0/inst/pl_clk_unbuffered[0]
     BUFG_PS_X0Y80        BUFG_PS (Prop_BUFG_PS_I_O)
                                                       0.038     0.267 r  system_i/zynq_ultra_ps_e_0/inst/buffer_pl_clk_0.PL_CLK_0_BUFG/O
-    X0Y1 (CLOCK_ROOT)    net (fo=18257, routed)       2.164     2.431    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/aclk
-    SLICE_X19Y97         FDRE                                         r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[1].r_shelf_reg[1][48]/C
-                         clock pessimism             -0.173     2.258    
-    SLICE_X19Y97         FDRE (Hold_DFF_SLICEL_C_D)
-                                                      0.101     2.359    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[1].r_shelf_reg[1][48]
+    X0Y1 (CLOCK_ROOT)    net (fo=18261, routed)       2.123     2.390    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/aclk
+    SLICE_X9Y85          FDRE                                         r  system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[2].r_shelf_reg[2][22]/C
+                         clock pessimism             -0.173     2.217    
+    SLICE_X9Y85          FDRE (Hold_HFF2_SLICEL_C_D)
+                                                      0.103     2.320    system_i/smartconnect_0/inst/s00_entry_pipeline/s00_si_converter/inst/converter.wrap_narrow_inst/gen_thread_loop[2].r_shelf_reg[2][22]
   -------------------------------------------------------------------
-                         required time                         -2.359    
-                         arrival time                           2.369    
+                         required time                         -2.320    
+                         arrival time                           2.331    
   -------------------------------------------------------------------
-                         slack                                  0.010    
+                         slack                                  0.011    
 
 
 
