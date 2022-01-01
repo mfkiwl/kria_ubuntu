@@ -54,7 +54,13 @@ You can start installing things.
     sudo apt install subversion
     sudo apt intall git
 
-Configure the PL side of the Zynq with an FPGA design.
+## Load and Test an FPGA design
+
+Configure the PL side of the Zynq with an FPGA design. On the Kria do this stuff:
+
+    mkdir ~/github
+
+    cd ~/github
 
     git clone https://github.com/hdlguy/kria_ubuntu.git
 
@@ -65,6 +71,24 @@ Configure the PL side of the Zynq with an FPGA design.
     echo top.bit.bin > /sys/class/fpga_manager/fpga0/firmware
 
     exit
+    
+    cd ~/github/kria_ubuntu/software/apps/bram_test
+
+    make
+
+    sudo ./test
+
+You should get something like this printing the ID and Version registers of the FPGA design and testing the bram.
+
+pedro@kria:~/github/kria_ubuntu/software/apps/bram_test$ sudo ./test
+@phy_addr_2_vir_addr:52, phy_addr 0xa0000000 mapped to 0x0xffff8ba69000 with size=0x2000000 bytes
+phy_addr 0xa0000000 with size 0x02000000 to viraddr 0x0xffff8ba69000.
+FPGA ID: 0xDEADBEEF
+VERSION: 0x76543210
+bram_ptr = 0xffff8ba79000
+errors = 0
+
+
 
 Good luck.
 
