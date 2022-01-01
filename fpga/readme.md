@@ -15,7 +15,7 @@ These instructions assume you are working from a supported Linux distribution.  
 - sudo ./xsetup
 
 Set the environment variables. I put these in a shell script for convenience.
-    source /opt/Xilinx/Vivado/2021.2/settings64.sh; source /opt/Xilinx/Vitis/2021.2/settings64.sh
+- source /opt/Xilinx/Vivado/2021.2/settings64.sh; source /opt/Xilinx/Vitis/2021.2/settings64.sh
 
 ## Setup the Project
 - cd .../fpga/implement
