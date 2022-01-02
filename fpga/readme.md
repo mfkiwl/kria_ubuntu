@@ -1,5 +1,6 @@
 # Notes on FPGA Compilation
 These instructions assume you are working from a supported Linux distribution.  I use Ubutu 20.04 LTS.
+
 ## Install some dependencies
     sudo apt update
     sudo apt upgrade
