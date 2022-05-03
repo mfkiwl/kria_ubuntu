@@ -26,7 +26,9 @@ int main(int argc,char** argv)
     }
     //fprintf(stdout,"phy_addr 0x%08x with size 0x%08x to viraddr 0x%p.\n",pcie_bar0_addr,pcie_bar0_size, pcie_addr);
 
-    fprintf(stdout,"FPGA ID=0x%08X, VERSION=0x%08X\n", read_reg(pcie_addr,FPGA_ID), read_reg(pcie_addr,FPGA_VERSION));
+    //fprintf(stdout,"FPGA ID=0x%08X, VERSION=0x%08X\n", read_reg(pcie_addr,FPGA_ID), read_reg(pcie_addr,FPGA_VERSION));
+    uint32_t *regbuf = (uint32_t *)(pcie_addr+REGFILE_OFFSET);
+    fprintf(stdout,"FPGA ID=0x%08X, VERSION=0x%08X\n", regbuf[FPGA_ID], regbuf[FPGA_VERSION]);
 
     //fprintf(stdout,"VERSION: 0x%08X\n",read_reg(pcie_addr,FPGA_VERSION));
 
