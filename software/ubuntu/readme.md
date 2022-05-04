@@ -64,7 +64,7 @@ Configure the PL side of the Zynq with an FPGA design. On the Kria do this stuff
 
     git clone https://github.com/hdlguy/kria_ubuntu.git
 
-    cp ~/github/kria_ubuntu/fpga/implement/results/top.bit.bin to /lib/firmware (You may have to create /lib/firmware.)
+    cp ~/github/kria_ubuntu/fpga/implement/results/top.bit.bin /lib/firmware (You may have to create /lib/firmware.)
 
     sudo su
 
