@@ -1,8 +1,8 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
-| Date         : Sun Jan  2 08:42:42 2022
-| Host         : WD-SN850 running 64-bit Ubuntu 20.04.3 LTS
+| Date         : Wed May  4 12:48:57 2022
+| Host         : pdudley-msi-laptop running 64-bit Ubuntu 20.04.4 LTS
 | Command      : report_utilization -file ./results/utilization.rpt
 | Design       : top
 | Device       : xck26-sfvc784-2LV-c
