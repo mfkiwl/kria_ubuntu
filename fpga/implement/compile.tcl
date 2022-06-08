@@ -33,5 +33,3 @@ close_project
 
 exec bootgen -image bitstream.bif -arch zynqmp -o ./results/top.bit.bin -w
 
-#write_cfgmem -disablebitswap -force -format BIN -size 256 -interface SMAPx32 -loadbit "up 0x0 ./results/top.bit" -verbose ./results/top.bit.bin
-
